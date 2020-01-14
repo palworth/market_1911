@@ -28,68 +28,70 @@ pry(main)> item1 = Item.new({name: 'Peach', price: "$0.75"})
 pry(main)> item2 = Item.new({name: 'Tomato', price: '$0.50'})
 #=> #<Item:0x007f9c565c0ce8...>
 
-pry(main)> item2.name
+pry(main)> item2.name DONE
 #=> "Tomato"
 
-pry(main)> item2.price
+pry(main)> item2.price DONE
 #=> "$0.50"
 
 pry(main)> vendor = Vendor.new("Rocky Mountain Fresh")
 #=> #<Vendor:0x00007f85683152f0...>
 
-pry(main)> vendor.name
+pry(main)> vendor.name DONME
 #=> "Rocky Mountain Fresh"
 
-pry(main)> vendor.inventory
+pry(main)> vendor.inventory DONE
 #=> {}
 
-pry(main)> vendor.check_stock(item1)
+pry(main)> vendor.check_stock(item1) DONE
 #=> 0
 
-pry(main)> vendor.stock(item1, 30)
+pry(main)> vendor.stock(item1, 30) DONE
 
-pry(main)> vendor.inventory
+pry(main)> vendor.inventory  DONE
 #=> {#<Item:0x007f9c56740d48...> => 30}
 
-pry(main)> vendor.check_stock(item1)
+pry(main)> vendor.check_stock(item1) DONE
 #=> 30
 
-pry(main)> vendor.stock(item1, 25)
+pry(main)> vendor.stock(item1, 25 DONE
 
-pry(main)> vendor.check_stock(item1)
+pry(main)> vendor.check_stock(item1) DONE
 #=> 55
 
-pry(main)> vendor.stock(item2, 12)
+pry(main)> vendor.stock(item2, 12) DONE
 
-pry(main)> vendor.inventory
+pry(main)> vendor.inventory DONE
 #=> {#<Item:0x007f9c56740d48...> => 55, #<Item:0x007f9c565c0ce8...> => 12}
 ```
 
 ## Iteration 2 - Market and Vendors
 
-A Market is responsible for keeping track of Vendors. It should have a method called `vendor_names` that returns an array of all the Vendor's names.
+A Market is responsible for keeping track of Vendors. It should have
+
+
 
 Additionally, the Market should have a method called `vendors_that_sell` that takes an argument of an item represented as a String. It will return a list of Vendors that have that item in stock.
 
 Use TDD to create a `Market` class that responds to the following interaction pattern:
 
 ```ruby
-pry(main)> require './lib/item'
+pry(main)> require './lib/item' DONE
 #=> true
 
-pry(main)> require './lib/vendor'
+pry(main)> require './lib/vendor' DONE
 #=> true
 
-pry(main)> require './lib/market'
+pry(main)> require './lib/market' DONE
 #=> true
 
 pry(main)> market = Market.new("South Pearl Street Farmers Market")    
 #=> #<Market:0x00007fe134933e20...>
 
-pry(main)> market.name
+pry(main)> market.name DONE
 #=> "South Pearl Street Farmers Market"
 
-pry(main)> market.vendors
+pry(main)> market.vendors DONE
 #=> []
 
 pry(main)> vendor1 = Vendor.new("Rocky Mountain Fresh")
@@ -129,16 +131,18 @@ pry(main)> market.add_vendor(vendor2)
 
 pry(main)> market.add_vendor(vendor3)
 
-pry(main)> market.vendors
+pry(main)> market.vendors DONE
 #=> [#<Vendor:0x00007fe1348a1160...>, #<Vendor:0x00007fe1349bed40...>, #<Vendor:0x00007fe134910650...>]
 
-pry(main)> market.vendor_names
+# a method called `vendor_names` that returns an array of all the Vendor's names Look PAIRed FINAL""
+
+pry(main)> market.vendor_names DONE
 #=> ["Rocky Mountain Fresh", "Ba-Nom-a-Nom", "Palisade Peach Shack"]
 
-pry(main)> market.vendors_that_sell(item1)
+pry(main)> market.vendors_that_sell(item1) DONE
 #=> [#<Vendor:0x00007fe1348a1160...>, #<Vendor:0x00007fe134910650...>]
 
-pry(main)> market.vendors_that_sell(item4)
+pry(main)> market.vendors_that_sell(item4) DONE 
 #=> [#<Vendor:0x00007fe1349bed40...>]
 ```
 
