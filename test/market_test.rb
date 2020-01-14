@@ -62,4 +62,45 @@ class MarketTest < Minitest::Test
     assert_equal [@vendor2], @market.vendors_that_sell(@item4)
   end
 
+  def test_it_can_return_sorted_item_list
+    @vendor1.stock(@item1, 35)
+    @vendor1.stock(@item2, 7)
+    @vendor2.stock(@item4, 50)
+    @vendor2.stock(@item3, 25)
+    @vendor3.stock(@item1, 65)
+    @market.add_vendor(@vendor1)
+    @market.add_vendor(@vendor2)
+    @market.add_vendor(@vendor3)
+    expected = ["Banana Nice Cream", "Peach", "Peach-Raspberry Nice Cream", "Tomato"]
+    assert_equal expected, @market.sorted_item_list
+  end
+
+
+
+  # Additionally, your `Market` class should have a
+  #  method called `total_inventory` that reports the
+  #  quantities of all items sold at the market.
+  # Specifically, it should return a hash with items as
+  #  keys and quantities as values. If multiple Vendors sell
+  #   the same item, the quantity listed should be the sum of
+  #  all the quantities.
+
+  def test_it_returns_total_inventory
+    @vendor1.stock(@item1, 35)
+    @vendor1.stock(@item2, 7)
+    @vendor2.stock(@item4, 50)
+    @vendor2.stock(@item3, 25)
+    @vendor3.stock(@item1, 65)
+    @market.add_vendor(@vendor1)
+    @market.add_vendor(@vendor2)
+    @market.add_vendor(@vendor3)
+    expected = {
+      @item1 => 100,
+      @item2 => 7,
+      @item3 => 25,
+      @item4 => 50
+    }
+    assert_equal expected, @market.total_inventory
+  end
+
 end

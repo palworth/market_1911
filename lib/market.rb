@@ -17,8 +17,28 @@ class Market
 
   def vendors_that_sell(item)
     @vendors.find_all do |vendor|
-      # require "pry"; binding.pry
       vendor.inventory[item] != 0
     end
+  end
+
+  def sorted_item_list
+    x = []
+    @vendors.each do |vendor|
+      vendor.inventory.each do |k, v|
+      x << k.name
+      end
+    end
+    x.sort_by {|name| name}.uniq
+  end
+
+  def total_inventory
+    inventory_log = Hash.new(0)
+    @vendors.each do |vendor|
+      vendor.inventory.map do |keys, values|
+        inventory_log[keys] += values
+        # require "pry"; binding.pry
+      end
+    end
+    inventory_log
   end
 end
